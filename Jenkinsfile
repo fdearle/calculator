@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Check') {
+    stage('Build production image') {
       steps {
         sh 'docker build -t calculator -f Dockerfile.production .'
       }
@@ -14,6 +14,11 @@ pipeline {
     stage('Run tests') {
       steps {
         sh 'docker run --rm calculator-test'
+      }
+    }
+    stage('Ask to Continue') {
+      steps {
+        input 'Should I continue'
       }
     }
   }
