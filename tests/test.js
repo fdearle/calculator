@@ -8,7 +8,7 @@ describe('Calculator unit tests', function(){
             .get("/calculator/add?first=1.2&second=3.4")
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
-            .expect(200, {result : 4.6})
+            .expect(404, {result : 4.6})
             .end(function (err) {
                 if(err) {
                     return done(err);
